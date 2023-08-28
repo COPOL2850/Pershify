@@ -1,0 +1,17 @@
+$background-dark-main : #222222;
+$lines-gray : #bbbbbb;
+$nav-singUp-bg:#fff;
+$singUp-container-bg:white;
+$singUp-container-bg-hidden:rgba(255, 255, 255, 0);
+$singUp-bg:#FAFF00;
+$singUp-text:black;
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Rubik&display=swap');
+*{
+    font-family: 'Rubik', sans-serif;
+}
+
+
+body{
+    background-color: $background-dark-main;
+}

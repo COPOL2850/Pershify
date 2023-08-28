@@ -1,0 +1,223 @@
+@import '../../../App.scss';
+
+.header {
+    border-bottom: 0.5px solid $lines-gray;
+
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 70px;
+        background-color: $background-dark-main;
+        // border-bottom: 0.5px solid $lines-gray;
+        padding: 0 10px;
+
+
+        .logo-container {
+            height: 100%;
+            width: 180px;
+            display: flex;
+            align-items: center;
+            // background-color: red;
+
+
+            .non-text-logo {
+                display: flex;
+                width: 40px;
+                height: 40px;
+            }
+
+            .text-logo {
+                display: flex;
+                height: 75px;
+                padding: 0 0 10px 0;
+            }
+        }
+
+        
+
+
+
+            .header-singUp {
+                display: flex;
+                margin-right: auto;
+                height: 100%;
+                width: 120px;
+                background-color: green;
+
+                .singUp-container {
+                    background-color: $singUp-container-bg-hidden;
+                    width: 120px;
+                    height: 50px;
+                    border-radius: 0.7rem;
+                    margin-top: 8px;
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    transition: 0.3s;
+                    transition-delay: 0.1s;
+
+
+
+
+                    .singUp {
+                        background-color: $singUp-bg;
+                        width: 100px;
+                        height: 30px;
+                        visibility: visible;
+                        margin: 10px 0 0 0;
+                        border-radius: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-decoration: none;
+                        color: $singUp-text;
+                        font-size: 14px;
+
+
+                        div {
+                            margin-bottom: 5px;
+                            padding: 0 0 0 25px;
+                            transition: 0.3s;
+                            
+                        }
+
+                        div::after {
+                            content: ">";
+                            text-align: center;
+                            padding: 2px 1px 0 0;
+                            width: 30px;
+                            height: 30px;
+                            // background-color: red;
+                            // border: 0.2px solid black;
+                            border-radius: 1rem;
+                            position: absolute;
+                            transform: rotate(-90deg) translate(2px, -11px);
+                            transition: 0.3s;
+                            transition-delay: 0.3s;
+                            
+                        }
+
+                    }
+
+                    .login {
+                        background-color: rgba(0, 0, 0, 0);
+                        width: 100px;
+                        height: 30px;
+                        visibility: visible;
+                        border-radius: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-decoration: none;
+                        color: #ffffff00;
+                        font-size: 13px;
+                        // visibility: hidden;
+                        position: absolute;
+                        margin-top: 50px;
+                        transition: 0.3s;
+                        display: none;
+
+
+                        div {
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+
+                .singUp-container:hover {
+                    background-color: $singUp-container-bg;
+                    height: 88px;
+                    transition: 0.3s;
+
+                    // transition-delay: 0.5s;
+                    .singUp {
+
+                        div,
+                        div::after {
+                            padding: 0;
+                            transition: 0.3s;
+                            
+                        }
+
+                        div::after {
+                            display: none;
+                            transition: 0.3s;
+                            
+                        }
+                    }
+
+                    .login {
+                        display: flex;
+                        background-color: black;
+                        color: white;
+                        // height: 88px;
+                        transition: 0.5s;
+                        transition-delay: 0.5s;
+                        // transition-delay: 0.5s;
+
+
+
+                    }
+
+
+                }
+
+
+
+            }
+
+
+            @media (pointer:coarse) {
+                .header-singUp {
+                    width: 235px;
+                    .singUp-container {
+                        background-color: $singUp-container-bg-hidden;
+                        width: 235px;
+                        height: 50px;
+                        border-radius: 0.7rem;
+                        margin-top: 8px;
+                        display: flex;
+                        justify-content: center;
+
+                        transition: 0.3s;
+                        transition-delay: 0.1s;
+
+
+                        .singUp {
+                            margin-right: 10px;
+
+                            div {
+                                padding: 0;
+                            }
+
+                            div::after {
+                                display: none;
+
+                            }
+                        }
+
+                        .login {
+                            background-color: black;
+                            position: relative;
+                            display: flex;
+                            margin: 10px;
+
+                            div {
+                                color: #fff;
+                            }
+                        }
+
+                    }
+
+                    .singUp-container:hover {
+                        background-color: $singUp-container-bg-hidden;
+                        width: 235px;
+                        height: 50px;
+                    }
+                }
+            }
+        
+    }
+}
