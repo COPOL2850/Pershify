@@ -35,189 +35,266 @@
             }
         }
 
-        
 
+        .header-nav {
+            // background-color: red;
+            width: 100%;
+            height: 100%;
 
-
-            .header-singUp {
+            .nav-container {
                 display: flex;
-                margin-right: auto;
+                justify-content: space-around;
+                align-items: center;
                 height: 100%;
-                width: 120px;
-                background-color: green;
+                // background-color: green;
 
-                .singUp-container {
-                    background-color: $singUp-container-bg-hidden;
-                    width: 120px;
-                    height: 50px;
-                    border-radius: 0.7rem;
-                    margin-top: 8px;
-                    display: flex;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    transition: 0.3s;
-                    transition-delay: 0.1s;
+                .nav-links {
+                    // display: none;
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: bold;
 
+                    // background-color: #fff;
+                    div {
+                        // background-color: orange;
+                        padding: 5px;
 
-
-
-                    .singUp {
-                        background-color: $singUp-bg;
-                        width: 100px;
-                        height: 30px;
-                        visibility: visible;
-                        margin: 10px 0 0 0;
-                        border-radius: 1rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-decoration: none;
-                        color: $singUp-text;
-                        font-size: 14px;
-
-
-                        div {
-                            margin-bottom: 5px;
-                            padding: 0 0 0 25px;
-                            transition: 0.3s;
-                            
-                        }
-
-                        div::after {
-                            content: ">";
-                            text-align: center;
-                            padding: 2px 1px 0 0;
-                            width: 30px;
-                            height: 30px;
-                            // background-color: red;
-                            // border: 0.2px solid black;
-                            border-radius: 1rem;
-                            position: absolute;
-                            transform: rotate(-90deg) translate(2px, -11px);
-                            transition: 0.3s;
-                            transition-delay: 0.3s;
-                            
-                        }
-
-                    }
-
-                    .login {
-                        background-color: rgba(0, 0, 0, 0);
-                        width: 100px;
-                        height: 30px;
-                        visibility: visible;
-                        border-radius: 1rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-decoration: none;
-                        color: #ffffff00;
-                        font-size: 13px;
-                        // visibility: hidden;
-                        position: absolute;
-                        margin-top: 50px;
-                        transition: 0.3s;
-                        display: none;
-
-
-                        div {
-                            margin-bottom: 5px;
-                        }
                     }
                 }
 
-                .singUp-container:hover {
-                    background-color: $singUp-container-bg;
-                    height: 88px;
-                    transition: 0.3s;
+                .nav-links:hover {
+                    color: #9e9e9e;
+                }
 
-                    // transition-delay: 0.5s;
-                    .singUp {
+                .search-box {
+                    position: relative;
+                    // background-color: red;
+                    width: 100%;
+                    height: 100%;
+                    // margin: 0 15px;
+                    // padding: 19px 5px 0 5px;
+                    display: none;
 
-                        div,
-                        div::after {
-                            padding: 0;
-                            transition: 0.3s;
-                            
-                        }
 
-                        div::after {
-                            display: none;
-                            transition: 0.3s;
-                            
-                        }
-                    }
+                    .search-box-container {
 
-                    .login {
-                        display: flex;
-                        background-color: black;
-                        color: white;
-                        // height: 88px;
+
+
+                        background-color: $background-dark-main;
+                        width: 0px;
+                        height: 0px;
+
                         transition: 0.5s;
-                        transition-delay: 0.5s;
-                        // transition-delay: 0.5s;
-
-
-
+                        border-radius: 1rem;
+                        border: #fff solid 1px;
                     }
+                }
 
 
+            }
+        }
+
+
+        .header-singUp {
+            display: flex;
+            margin-right: auto;
+            height: 100%;
+            width: 120px;
+            // background-color: green;
+
+            .singUp-container {
+                background-color: $singUp-container-bg-hidden;
+                width: 120px;
+                height: 50px;
+                border-radius: 0.7rem;
+                margin-top: 8px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                transition: 0.3s;
+                transition-delay: 0.1s;
+                position: relative;
+
+                #header-singUp-expander {
+
+                    text-align: center;
+                    padding: 7px 1px 0 0;
+                    width: 40px;
+                    height: 110px;
+                    background-color: rgba(255, 0, 0, 0);
+                    // border: 0.2px solid black;
+                    border-radius: 1rem;
+                    position: absolute;
+                    left: 40px;
+                    top: -30px;
+                    transform: rotate(-90deg);
+                    transition: 0.3s;
+                    transition-delay: 0.3s;
                 }
 
 
 
-            }
+                .singUp {
+                    background-color: $singUp-bg;
+                    width: 100px;
+                    height: 30px;
+                    visibility: visible;
+                    margin: 10px 0 0 0;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: $singUp-text;
+                    font-size: 14px;
 
 
-            @media (pointer:coarse) {
-                .header-singUp {
-                    width: 235px;
-                    .singUp-container {
-                        background-color: $singUp-container-bg-hidden;
-                        width: 235px;
-                        height: 50px;
-                        border-radius: 0.7rem;
-                        margin-top: 8px;
-                        display: flex;
-                        justify-content: center;
-
+                    div {
+                        margin-bottom: 5px;
+                        padding: 0 0 0 25px;
                         transition: 0.3s;
-                        transition-delay: 0.1s;
-
-
-                        .singUp {
-                            margin-right: 10px;
-
-                            div {
-                                padding: 0;
-                            }
-
-                            div::after {
-                                display: none;
-
-                            }
-                        }
-
-                        .login {
-                            background-color: black;
-                            position: relative;
-                            display: flex;
-                            margin: 10px;
-
-                            div {
-                                color: #fff;
-                            }
-                        }
 
                     }
 
-                    .singUp-container:hover {
-                        background-color: $singUp-container-bg-hidden;
-                        width: 235px;
-                        height: 50px;
+                    // div::after {
+                    //     content: ">";
+                    //     text-align: center;
+                    //     padding: 6px 1px 0 0;
+                    //     width: 30px;
+                    //     height: 30px;
+                    //     // background-color: red;
+                    //     // border: 0.2px solid black;
+                    //     border-radius: 1rem;
+                    //     position: absolute;
+                    //     transform: rotate(-90deg) translate(2px, -11px);
+                    //     transition: 0.3s;
+                    //     transition-delay: 0.3s;
+
+                    // }
+
+                }
+
+                .login {
+                    background-color: rgba(0, 0, 0, 0);
+                    width: 100px;
+                    height: 30px;
+                    visibility: visible;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: #ffffff00;
+                    font-size: 13px;
+                    // visibility: hidden;
+                    position: absolute;
+                    margin-top: 50px;
+                    transition: 0.3s;
+                    display: none;
+
+
+                    div {
+                        margin-bottom: 5px;
                     }
                 }
             }
-        
+
+            .singUp-container:hover {
+                background-color: $singUp-container-bg;
+                height: 88px;
+                transition: 0.3s;
+
+                #header-singUp-expander {
+                    left: 0;
+                    // transform: translate(10px,20px);
+                    padding: 0;
+                    transition: 0.5s;
+                    transform: translateY(-200px);
+                }
+
+
+
+                // transition-delay: 0.5s;
+                .singUp {
+
+                    div {
+                        padding: 0;
+                        transition: 0.3s;
+
+                    }
+
+
+                }
+
+                .login {
+                    display: flex;
+                    background-color: black;
+                    color: white;
+                    // height: 88px;
+                    transition: 0.5s;
+                    transition-delay: 0.5s;
+                    // transition-delay: 0.5s;
+                }
+
+
+            }
+
+
+
+        }
+
+
+        // @media (pointer:coarse) {
+        //     .header-singUp {
+        //         width: 235px;
+
+
+        //         .singUp-container {
+        //             background-color: $singUp-container-bg-hidden;
+        //             width: 235px;
+        //             height: 50px;
+        //             border-radius: 0.7rem;
+        //             margin-top: 8px;
+        //             display: flex;
+        //             justify-content: center;
+
+        //             transition: 0.3s;
+        //             transition-delay: 0.1s;
+
+
+        //             .singUp {
+        //                 margin-right: 10px;
+
+        //                 div {
+        //                     padding: 0;
+        //                 }
+
+        //                 #header-singUp-expander {
+        //                     display: none;
+
+        //                 }
+        //             }
+
+        //             .login {
+        //                 background-color: black;
+        //                 position: relative;
+        //                 display: flex;
+        //                 margin: 10px;
+
+        //                 div {
+        //                     color: #fff;
+        //                 }
+        //             }
+
+        //         }
+
+        //         .singUp-container:hover {
+        //             background-color: $singUp-container-bg-hidden;
+        //             width: 235px;
+        //             height: 50px;
+        //         }
+        //     }
+        // }
+
     }
 }
