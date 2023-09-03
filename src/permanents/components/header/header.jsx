@@ -1,45 +1,73 @@
 
 import "./header.scss";
 import nonTextLogo from "../../../assets/svgs/pershify-non-text-logo.svg";
-import TextLogo from "../../../assets/svgs/pershify-text-logo.svg";
+import textLogo from "../../../assets/svgs/pershify-text-logo.svg";
+import hambergerMenu from "../../../assets/svgs/hamberger-menu.svg";
+import searchBtn from "../../../assets/svgs/search-btn.svg";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 export const Header = () => {
     const [navLiknsDisplay, setNavLiknsDisplay] = useState("flex");
-    const [singUpContainerStyle, setSingUpContainerStyle] = useState();
-    const [headerSingUpExpanderStyle, setHeaderSingUpExpanderStyle] = useState();
-    const [singUpStyle, setsingUpStyle] = useState();
-    const [loginStyle, setLoginStyle] = useState();
     const [searchBoxStyle, setSearchBoxStyle] = useState();
     const [searchBoxContainerStyle, setSearchBoxContainerStyle] = useState();
-    const [headerSingUpExpanderClick, setHeaderSingUpExpanderClick] = useState(null);
+    const [headerNavStyle, setHeaderNavStyle] = useState();
+    const [headerStyle, setHeaderStyle] = useState();
+    const [navContainerStyle, setNavContainerStyle] = useState();
+    // const [screenWidth, setScreenWidth] = useState(screen.width);
+
 
 
 
     return (
-        <div className="header">
+        <div className="header" style={headerStyle}>
 
             <div className="header-container">
+                <div className="header-sidebar-opener">
+                    <div className="header-sidebar-hamberger-btn" onClick={() => {
+                        setHeaderNavStyle({
+                            display: "flex",
+                            width: "0",
+                            height: "100%"
+
+                        })
+                        setTimeout(() => {
+
+                            setHeaderNavStyle(
+                                {
+                                    display: "flex",
+                                    backgroundColor: "#343434",
+                                    height: "100%",
+
+                                    transition: "0.5s"
+
+                                }
+                            )
+                            setNavContainerStyle({
+                                justifyContent: "space-around"
+                            })
+                        }, 0.5);
+
+                    }}>
+                        <img src={hambergerMenu} alt="" />
+                    </div>
+                </div>
                 <div className="header-logo">
                     <Link to={'/'} >
                         <div className="logo-container">
 
                             <div className="non-text-logo"><img src={nonTextLogo} alt="لوگوی پرشیفای" /></div>
-                            <div className="text-logo"><img src={TextLogo} alt="لوگوی پرشیفای" /></div>
+                            <div className="text-logo"><img src={textLogo} alt="لوگوی پرشیفای" /></div>
 
                         </div>
                     </Link>
                 </div>
-                <div className="header-nav">
-                    <div className="nav-container">
-
-
-
+                <div className="header-nav" style={headerNavStyle}>
+                    <div className="nav-container" style={navContainerStyle}>
                         <div className="search-box"
                             style={searchBoxStyle}>
                             <div className="search-box-container" style={searchBoxContainerStyle} >
-                                <div className="x" onClick={() => {
+                                {/* <div className="x" onClick={() => {
 
                                     setSearchBoxContainerStyle({
                                         width: "0",
@@ -52,27 +80,39 @@ export const Header = () => {
                                         }); setNavLiknsDisplay("flex");
                                     }, 550);
 
-                                }}>x</div>
+                                }}>x</div> */}
+                                <div className="header-search-input-container">
+                                    <input type="text" placeholder="جستجو" className="header-search-input" />
+                                    <button className="search-btn">
+                                        <img src={searchBtn} alt="" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
-                            setNavLiknsDisplay("none");
-                            setSearchBoxStyle({
 
-                                display: "flex",
-                                width: "100%",
-                                height: "100%",
-                                padding: "19px 5px 0 5px"
-                            });
-                            setTimeout(() => {
-                                setSearchBoxContainerStyle({
-                                    backgroundColor: "$background-dark-main",
+                            if (screen.width <= 850) {
+                                window.location = "/search/";
+                            } else {
+
+                                setNavLiknsDisplay("none");
+
+                                setSearchBoxStyle({
+
+                                    display: "flex",
                                     width: "100%",
-                                    height: "500px",
-                                    transition: "0.5s",
+                                    height: "100%",
+                                    padding: "19px 5px 0 5px"
                                 });
-                            }, 20);
-
+                                setTimeout(() => {
+                                    setSearchBoxContainerStyle({
+                                        backgroundColor: "$background-dark-main",
+                                        width: "100%",
+                                        height: "400px",
+                                        transition: "0.5s",
+                                    });
+                                }, 20);
+                            }
 
 
                         }}>
@@ -94,42 +134,13 @@ export const Header = () => {
                     </div>
                 </div>
                 <div className="header-singUp">
-                    <div className="singUp-container" style={singUpContainerStyle}>
+                    <div className="singUp-container" >
                         <Link to={'/singup'} className="singUp">
-                            <div style={singUpStyle}>ثبت نام</div>
+                            <div >ثبت نام</div>
                         </Link>
-                        <div id="header-singUp-expander" style={headerSingUpExpanderStyle} onClick={() => {
-                            
-                            setSingUpContainerStyle({
+                        <div id="header-singUp-expander"  >{`>`}</div>
 
-                                backgroundColor: "white",
-                                height: "88px",
-                                transition: "0.3s"
-                            });
-                            setHeaderSingUpExpanderStyle({
-                                left: "0",
-
-                                padding: "0",
-                                transition: "10s",
-                                display: "none",
-                                transition: "10s",
-                            });
-                            setsingUpStyle({
-                                padding: "0",
-                                transition: "0.3s",
-                            });
-                            setLoginStyle({
-                                display: "flex",
-                                backgroundColor: "black",
-                                color: "white",
-
-                                transition: "0.5s",
-                                transitionDelay: "0.5s",
-
-                            });
-                        }}>{`>`}</div>
-
-                        <Link to={'/login'} className="login" style={loginStyle}>
+                        <Link to={'/login'} className="login" >
                             <div >ورود به حساب</div>
                         </Link>
                     </div>
