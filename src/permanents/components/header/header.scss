@@ -115,7 +115,8 @@
                                 width: 100%;
                                 border-radius: 0 1rem 1rem 0;
                                 border: solid 2px rgb(172, 172, 172);
-                                border-left: 0;
+                                // border-left: 0;
+                                border-left: 0.5px solid rgb(172, 172, 172);
                                 background-color: #181818;
                                 text-indent: 15px;
                                 padding: 0 0 4px 0;
@@ -132,7 +133,7 @@
                             .search-btn{
                                 width: 45px;
                                 border: solid 2px rgb(172, 172, 172);
-                                border-right: 1px solid white;
+                                border-right: 0.5px solid rgb(172, 172, 172);
                                 border-radius: 1rem 0 0 1rem;
                                 background-color: black;
 

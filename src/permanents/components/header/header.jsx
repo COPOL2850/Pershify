@@ -5,22 +5,23 @@ import textLogo from "../../../assets/svgs/pershify-text-logo.svg";
 import hambergerMenu from "../../../assets/svgs/hamberger-menu.svg";
 import searchBtn from "../../../assets/svgs/search-btn.svg";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useRef, useEffect, useState } from "react";
 
-export const Header = () => {
+export const Header = (props) => {
     const [navLiknsDisplay, setNavLiknsDisplay] = useState("flex");
     const [searchBoxStyle, setSearchBoxStyle] = useState();
     const [searchBoxContainerStyle, setSearchBoxContainerStyle] = useState();
     const [headerNavStyle, setHeaderNavStyle] = useState();
     const [headerStyle, setHeaderStyle] = useState();
     const [navContainerStyle, setNavContainerStyle] = useState();
-    // const [screenWidth, setScreenWidth] = useState(screen.width);
+    const [liveSearchResultCount, setLiveSearchResultCount] = useState(0);
+
 
 
 
 
     return (
-        <div className="header" style={headerStyle}>
+        <div className="header" style={headerStyle} >
 
             <div className="header-container">
                 <div className="header-sidebar-opener">
@@ -87,11 +88,13 @@ export const Header = () => {
                                         <img src={searchBtn} alt="" />
                                     </button>
                                 </div>
+                                <div className="header-search-result-container">
+
+                                </div>
                             </div>
                         </div>
                         <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
-
-                            if (screen.width <= 850) {
+                            if (window.innerHeight <= 500 || window.innerWidth <= 850) {
                                 window.location = "/search/";
                             } else {
 
