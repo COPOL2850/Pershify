@@ -4,10 +4,12 @@ import nonTextLogo from "../../../assets/svgs/pershify-non-text-logo.svg";
 import textLogo from "../../../assets/svgs/pershify-text-logo.svg";
 import hambergerMenu from "../../../assets/svgs/hamberger-menu.svg";
 import searchBtn from "../../../assets/svgs/search-btn.svg";
+import searchNotFound from "../../../assets/svgs/search-not-found.svg";
 import { Link } from "react-router-dom";
 import React, { useLayoutEffect, useRef, useEffect, useState } from "react";
+import { Logger } from "sass";
 
-export const Header = (props) => {
+export const Header = () => {
     const [navLiknsDisplay, setNavLiknsDisplay] = useState("flex");
     const [searchBoxStyle, setSearchBoxStyle] = useState();
     const [searchBoxContainerStyle, setSearchBoxContainerStyle] = useState();
@@ -15,6 +17,8 @@ export const Header = (props) => {
     const [headerStyle, setHeaderStyle] = useState();
     const [navContainerStyle, setNavContainerStyle] = useState();
     const [liveSearchResultCount, setLiveSearchResultCount] = useState(0);
+    const [rr, setRr] = useState();
+
 
 
 
@@ -68,28 +72,25 @@ export const Header = (props) => {
                         <div className="search-box"
                             style={searchBoxStyle}>
                             <div className="search-box-container" style={searchBoxContainerStyle} >
-                                {/* <div className="x" onClick={() => {
 
-                                    setSearchBoxContainerStyle({
-                                        width: "0",
-                                        height: "0",
-                                        transition: "0.5s",
-                                    })
-                                    setTimeout(() => {
-                                        setSearchBoxStyle({
-                                            display: "none",
-                                        }); setNavLiknsDisplay("flex");
-                                    }, 550);
-
-                                }}>x</div> */}
                                 <div className="header-search-input-container">
-                                    <input type="text" placeholder="جستجو" className="header-search-input" />
+                                    <input type="text" placeholder="جستجو" className="header-search-input" onChange={(e) => {
+                                        if (e.target.value === "") {
+                                            setRr("")
+                                        } else {
+                                            setRr(e.target.value)
+                                        }
+                                    }} />
                                     <button className="search-btn">
                                         <img src={searchBtn} alt="" />
                                     </button>
                                 </div>
-                                <div className="header-search-result-container">
+                                <div className="header-search-result">
+                                    <div className="header-search-result-container">
 
+                                        {SearchLoading(rr, liveSearchResultCount)}
+                                        {HeaderSearchResult(liveSearchResultCount)}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +112,7 @@ export const Header = (props) => {
                                     setSearchBoxContainerStyle({
                                         backgroundColor: "$background-dark-main",
                                         width: "100%",
-                                        height: "400px",
+                                        height: "max-content",
                                         transition: "0.5s",
                                     });
                                 }, 20);
@@ -154,4 +155,51 @@ export const Header = (props) => {
             </div>
         </div>
     )
+}
+
+const HeaderSearchResult = (liveSearchResultCount) => {
+    if (liveSearchResultCount === null) {
+
+    } else if (liveSearchResultCount !== 0) {
+
+    } else if (liveSearchResultCount === 0) {
+        return (
+            <div>
+                <div className="header-no-result">
+                    <img src={searchNotFound} alt="" />
+                    <div>متاسفم نتیجه‌ای یافت نشد !</div>
+                </div>
+            </div>
+        )
+    }
+
+}
+
+const SearchLoading = (rr, liveSearchResultCount) => {
+
+    console.log(rr);
+
+    if (rr !== "" && rr !== undefined && liveSearchResultCount === 0) {
+        return (
+            <div>
+
+                <div className="header-search-result-loading">
+                    <div className="album-art"></div>
+                    <div className="tags">
+                        <div className="title"></div>
+                        <div className="artist"></div>
+                    </div>
+                </div>
+                <div className="header-search-result-loading">
+                    <div className="album-art"></div>
+                    <div className="tags">
+                        <div className="title"></div>
+                        <div className="artist"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        )
+    }
 }
