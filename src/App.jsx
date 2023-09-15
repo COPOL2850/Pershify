@@ -2,10 +2,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header } from "./permanents/components/header/header";
 import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './App.scss';
+import { QueryClient, QueryClientProvider } from "react-query"
 
 function App() {
+
   return (
     <div className="App">
+      
+
       <Router>
         <Header />
         <Routes>
