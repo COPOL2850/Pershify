@@ -10,6 +10,7 @@ import React, { useLayoutEffect, useRef, useEffect, useState, startTransition } 
 import { Logger } from "sass";
 import { useQuery } from "react-query";
 import axios, { Axios } from "axios";
+import onClickOutside from 'react-onclickoutside';
 
 
 export const Header = () => {
@@ -24,9 +25,10 @@ export const Header = () => {
         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
     ]);
+    const [headerSearchBtnStyle,setHeaderSearchBtnStyle] = useState();
 
 
-
+    
     // const options = {
     //     method: 'GET',
     //     url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
@@ -156,34 +158,42 @@ export const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
-                            if (window.innerHeight <= 500 || window.innerWidth <= 850) {
-                                window.location = "/search/";
-                            } else {
+                            <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
 
-                                setNavLiknsDisplay("none");
+                                if (window.innerHeight <= 500 || window.innerWidth <= 850) {
+                                    window.location = "/search/";
 
-                                setSearchBoxStyle({
 
-                                    display: "flex",
-                                    width: "100%",
-                                    height: "100%",
-                                    padding: "19px 5px 0 5px"
-                                });
-                                setTimeout(() => {
-                                    setSearchBoxContainerStyle({
-                                        backgroundColor: "$background-dark-main",
+                                } else {
+                                    // console.log(window.location.pathname);
+                                    setNavLiknsDisplay("none");
+                                    
+                                    setSearchBoxStyle({
+
+                                        display: "flex",
                                         width: "100%",
-                                        height: "max-content",
-                                        transition: "0.5s",
+                                        height: "100%",
+                                        padding: "19px 5px 0 5px"
                                     });
-                                }, 20);
-                            }
+                                    setTimeout(() => {
+                                        setSearchBoxContainerStyle({
+                                            backgroundColor: "$background-dark-main",
+                                            width: "100%",
+                                            height: "max-content",
+                                            transition: "0.5s",
+                                        });
+                                        // setHeaderSearchBtnStyle({
+                                        //     width: "45px",
+                                        //     transition: "0.1s"
+                                        // });
+                                    }, 20);
+                                }
+                                
 
 
-                        }}>
-                            <div>جستجو</div>
-                        </Link>
+                            }}>
+                                <div>جستجو</div>
+                            </Link>
 
                         <Link to={'/new'} className=" nav-links nav-new" style={{ display: navLiknsDisplay }}>
                             <div>جدید</div>
