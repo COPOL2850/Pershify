@@ -231,7 +231,7 @@ export const Header = () => {
 
 
 const SearchResult = (searchResultValue, searchValue) => {
-    // console.log(searchResultValue)
+    console.log(searchResultValue)
     // console.log(searchResultValue.length);
 
     // if (searchResultValue == "0") {
@@ -250,13 +250,15 @@ const SearchResult = (searchResultValue, searchValue) => {
         return (
             <div>
                 <div className="header-search-result">
-                    <div className="header-search-result-container">
+                    <div className="header-search-result-container-received-result">
                         {searchResultValue.map((searchResult, index) => {
 
 
                             return (
 
-                                <div key={index} className="header-search-result-items">
+                                <div key={index} className="header-search-result-items" onClick={() => {
+                                    window.open(searchResult.preview, "_blank")
+                                }}>
                                     <img alt="album-art" src={searchResult.album.cover_small} className="album-art"></img>
                                     <div className="tags">
                                         <div className="title">{searchResult.title}</div>
@@ -267,7 +269,7 @@ const SearchResult = (searchResultValue, searchValue) => {
                             )
                         })}</div>
                 </div>
-                <Link className="continue-search-in-search-page" to={'/search/'} >جستجوی بیشتر درباره‌ی "{searchValue}"</Link>
+                <Link className="continue-search-in-search-page" to={'/search/'} >جستجوی بیشتر درباره‌ی "<span>{searchValue}</span>"</Link>
             </div>
         )
 
