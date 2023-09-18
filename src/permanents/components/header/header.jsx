@@ -25,10 +25,10 @@ export const Header = () => {
         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
         {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
     ]);
-    const [headerSearchBtnStyle,setHeaderSearchBtnStyle] = useState();
+    // const [headerSearchBtnStyle,setHeaderSearchBtnStyle] = useState();
 
 
-    
+
     // const options = {
     //     method: 'GET',
     //     url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
@@ -113,6 +113,7 @@ export const Header = () => {
                                                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
                                             ])
                                         } else {
+                                            setSearchValue(e.target.value);
 
                                             const options = {
                                                 method: 'GET',
@@ -150,50 +151,48 @@ export const Header = () => {
                                         <img src={searchBtn} alt="" />
                                     </button>
                                 </div>
-                                <div className="header-search-result">
-                                    <div className="header-search-result-container">
+                                <div className="search-result">
+                                    {SearchResult(searchResultValue, searchValue)}
 
-                                        {SearchResult(searchResultValue)}
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                            <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
+                        <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
 
-                                if (window.innerHeight <= 500 || window.innerWidth <= 850) {
-                                    window.location = "/search/";
+                            if (window.innerHeight <= 500 || window.innerWidth <= 850) {
+                                window.location = "/search/";
 
 
-                                } else {
-                                    // console.log(window.location.pathname);
-                                    setNavLiknsDisplay("none");
-                                    
-                                    setSearchBoxStyle({
+                            } else {
+                                // console.log(window.location.pathname);
+                                setNavLiknsDisplay("none");
 
-                                        display: "flex",
+                                setSearchBoxStyle({
+
+                                    display: "flex",
+                                    width: "100%",
+                                    height: "100%",
+                                    padding: "19px 5px 0 5px"
+                                });
+                                setTimeout(() => {
+                                    setSearchBoxContainerStyle({
+                                        backgroundColor: "$background-dark-main",
                                         width: "100%",
-                                        height: "100%",
-                                        padding: "19px 5px 0 5px"
+                                        height: "max-content",
+                                        transition: "0.5s",
                                     });
-                                    setTimeout(() => {
-                                        setSearchBoxContainerStyle({
-                                            backgroundColor: "$background-dark-main",
-                                            width: "100%",
-                                            height: "max-content",
-                                            transition: "0.5s",
-                                        });
-                                        // setHeaderSearchBtnStyle({
-                                        //     width: "45px",
-                                        //     transition: "0.1s"
-                                        // });
-                                    }, 20);
-                                }
-                                
+                                    // setHeaderSearchBtnStyle({
+                                    //     width: "45px",
+                                    //     transition: "0.1s"
+                                    // });
+                                }, 20);
+                            }
 
 
-                            }}>
-                                <div>جستجو</div>
-                            </Link>
+
+                        }}>
+                            <div>جستجو</div>
+                        </Link>
 
                         <Link to={'/new'} className=" nav-links nav-new" style={{ display: navLiknsDisplay }}>
                             <div>جدید</div>
@@ -231,7 +230,7 @@ export const Header = () => {
 }
 
 
-const SearchResult = (searchResultValue) => {
+const SearchResult = (searchResultValue, searchValue) => {
     // console.log(searchResultValue)
     // console.log(searchResultValue.length);
 
@@ -248,41 +247,58 @@ const SearchResult = (searchResultValue) => {
     // } else
     if (searchResultValue !== undefined && searchResultValue.length !== 0 && searchResultValue.length <= 25) {
 
+        return (
+            <div>
+                <div className="header-search-result">
+                    <div className="header-search-result-container">
+                        {searchResultValue.map((searchResult, index) => {
 
-        return searchResultValue.map((searchResult, index) => {
 
+                            return (
 
-            return (
+                                <div key={index} className="header-search-result-items">
+                                    <img alt="album-art" src={searchResult.album.cover_small} className="album-art"></img>
+                                    <div className="tags">
+                                        <div className="title">{searchResult.title}</div>
+                                        <div className="artist">{searchResult.artist.name}</div>
+                                    </div>
+                                </div>
 
-                <div key={index} className="header-search-result-items">
-                    <img alt="album-art" src={searchResult.album.cover_small} className="album-art"></img>
-                    <div className="tags">
-                        <div className="title">{searchResult.title}</div>
-                        <div className="artist">{searchResult.artist.name}</div>
-                    </div>
+                            )
+                        })}</div>
                 </div>
-            )
-
-
-
-        })
+                <Link className="continue-search-in-search-page" to={'/search/'} >جستجوی بیشتر درباره‌ی "{searchValue}"</Link>
+            </div>
+        )
 
 
 
     } else if (searchResultValue.length === 0) {
         return (
-            <div className="header-no-result">
-                <img src={searchNotFound} alt="" />
-                <div>متاسفانه نتیجه ای یافت نشد !</div>
+            <div>
+                <div className="header-search-result">
+                    <div className="header-search-result-container">
+                        <div className="header-no-result">
+                            <img src={searchNotFound} alt="" />
+                            <div>متاسفانه نتیجه ای یافت نشد !</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     } else if (searchResultValue.length === 27) {
         return (
-            <div className="header-search-result-loading">
-                <div alt="album-art" className="album-art"></div>
-                <div className="tags">
-                    <div className="title"></div>
-                    <div className="artist"></div>
+            <div>
+                <div className="header-search-result">
+                    <div className="header-search-result-container">
+                        <div className="header-search-result-loading">
+                            <div alt="album-art" className="album-art"></div>
+                            <div className="tags">
+                                <div className="title"></div>
+                                <div className="artist"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
