@@ -11,6 +11,7 @@ import { Logger } from "sass";
 import { useQuery } from "react-query";
 import axios, { Axios } from "axios";
 import onClickOutside from 'react-onclickoutside';
+import { searchApiKeys } from "../../Api/Api keys/search Api keys";
 
 
 export const Header = () => {
@@ -27,7 +28,7 @@ export const Header = () => {
     ]);
     // const [headerSearchBtnStyle,setHeaderSearchBtnStyle] = useState();
 
-
+    // console.log(searchApiKeys())
 
     // const options = {
     //     method: 'GET',
@@ -119,11 +120,9 @@ export const Header = () => {
                                                 method: 'GET',
                                                 url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
                                                 params: { q: e.target.value },
-                                                headers: {
-                                                    'X-RapidAPI-Key': '3d267e7a9bmsh3f6f85c02501cacp1270fejsn6cfdfa0075aa',
-                                                    'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-                                                }
+                                                headers: searchApiKeys()
                                             };
+                                            console.log(options);
                                             setSearchResultValue([
                                                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
                                                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
