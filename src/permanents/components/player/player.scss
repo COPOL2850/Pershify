@@ -1,0 +1,35 @@
+.player{
+    width: 250px;
+    border-left: solid white 1px;
+    .player-container{
+        .player-component-controller{
+            height: 40px;
+            visibility: hidden;
+        }
+        .album-art-container{
+            height: 250px;
+            margin: 50px 0 0 0;
+            
+            .album-art{
+                width: 200px;
+                height: 200px;
+                border-radius: 0.7rem;
+            }
+        }
+        .title-artist-container{
+            height: 60px;
+            padding: 0 30px;
+        }
+        .player-controll{
+
+        }
+    }
+
+}
+
+// @media only screen and (max-width:850px) {
+//     .player{
+//         width: 100%;
+    
+//     }
+//   }

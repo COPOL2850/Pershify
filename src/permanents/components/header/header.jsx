@@ -14,7 +14,7 @@ import onClickOutside from 'react-onclickoutside';
 import { searchApiKeys } from "../../Api/Api keys/search Api keys";
 
 
-export const Header = () => {
+export const Header = ({handleDataLivePlayer}) => {
     const [navLiknsDisplay, setNavLiknsDisplay] = useState("flex");
     const [searchBoxStyle, setSearchBoxStyle] = useState();
     const [searchBoxContainerStyle, setSearchBoxContainerStyle] = useState();
@@ -115,14 +115,13 @@ export const Header = () => {
                                             ])
                                         } else {
                                             setSearchValue(e.target.value);
-
                                             const options = {
                                                 method: 'GET',
                                                 url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
                                                 params: { q: e.target.value },
                                                 headers: searchApiKeys()
                                             };
-                                            console.log(options);
+                                            // console.log(options);
                                             setSearchResultValue([
                                                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},
                                                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
@@ -151,7 +150,7 @@ export const Header = () => {
                                     </button>
                                 </div>
                                 <div className="search-result">
-                                    {SearchResult(searchResultValue, searchValue)}
+                                    {SearchResult(searchResultValue, searchValue,handleDataLivePlayer)}
 
                                 </div>
                             </div>
@@ -229,8 +228,8 @@ export const Header = () => {
 }
 
 
-const SearchResult = (searchResultValue, searchValue) => {
-    console.log(searchResultValue)
+const SearchResult = (searchResultValue, searchValue,handleDataLivePlayer) => {
+    // console.log(searchResultValue)
     // console.log(searchResultValue.length);
 
     // if (searchResultValue == "0") {
@@ -255,8 +254,9 @@ const SearchResult = (searchResultValue, searchValue) => {
 
                             return (
 
-                                <div key={index} className="header-search-result-items" onClick={() => {
-                                    window.open(searchResult.preview, "_blank")
+                                <div key={index} className="header-search-result-items cursor-pointer" onClick={() => {
+                                    // window.open(searchResult.preview, "_blank")
+                                    handleDataLivePlayer(searchResult)
                                 }}>
                                     <img alt="album-art" src={searchResult.album.cover_small} className="album-art"></img>
                                     <div className="tags">

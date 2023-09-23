@@ -14,4 +14,21 @@ $singUp-text:black;
 
 body{
     background-color: $background-dark-main;
+    
+}
+.App{
+  // background-color: red;
+  main{
+    height: calc(100% - 71px);
+  }
+}
+
+@media only screen and (max-width:850px) {
+  
+  .App{
+  // background-color: red;
+  main{
+    height: calc(100% - 46px);
+  }
+}
 }
