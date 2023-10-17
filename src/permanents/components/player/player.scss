@@ -1,27 +1,94 @@
-.player{
+.player {
     width: 250px;
     border-left: solid white 1px;
-    .player-container{
-        .player-component-controller{
+
+    .player-container {
+        .player-component-controller {
             height: 40px;
             visibility: hidden;
         }
-        .album-art-container{
+
+        .album-art-container {
             height: 250px;
             margin: 50px 0 0 0;
-            
-            .album-art{
+
+            .album-art {
                 width: 200px;
                 height: 200px;
                 border-radius: 0.7rem;
             }
         }
-        .title-artist-container{
+
+        .title-artist-container {
             height: 60px;
             padding: 0 30px;
         }
-        .player-controll{
 
+        .player-controll {
+            div {
+                #live-player-music-playback-time {
+                    -webkit-appearance: none;
+                    padding: 0;
+                    // outline: none;
+                    color: #069;
+                    // opacity: .8;
+                    background: #7f7f7f;
+                    height: 1px;
+                    // box-sizing: border-box;
+                    transition: 0.5s;
+                    // transition: opacity .2s;
+                    cursor: pointer;
+                    border-radius: 1rem;
+                    overflow: hidden;
+
+                }
+
+                #live-player-music-playback-time:hover {
+                    -webkit-appearance: none;
+                    // padding: 0;
+                    // outline: none;
+                    color: rgb(153, 105, 0);
+                    // opacity: .8;
+                    background: #7f7f7f;
+                    height: 8px;
+                    transition: 0.1s;
+                    // box-sizing: border-box;
+                    // transition: opacity .2s;
+                    cursor: pointer;
+                    overflow: visible;
+
+                }
+
+                #live-player-music-playback-time::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    border-radius: 0;
+                    background: rgb(255, 255, 255);
+                    width: 20px;
+                    height: 1px;
+                }
+
+
+
+                padding: 0 30px;
+            }
+
+            .player-control-button-container{
+                display: flex;
+                justify-content: space-between;
+                // background-color: red;
+                margin-top: 20px;
+                align-items: center;
+                padding: 0 40px;
+                .live-player-control-button {
+                    width: 35px;
+                }
+            }
+
+            #next-button {}
+
+            #play-pause-button {}
+
+            #previuos-button {}
         }
     }
 
@@ -30,6 +97,6 @@
 // @media only screen and (max-width:850px) {
 //     .player{
 //         width: 100%;
-    
+
 //     }
 //   }
