@@ -486,11 +486,13 @@
                 transition: 0.3s;
 
                 #header-singUp-expander {
-                    left: 0;
+                    // left: 0;
+                    // top: -100px;
                     // transform: translate(10px,20px);
                     padding: 0;
                     transition: 0.5s;
-                    transform: translateY(-200px);
+                    // transform: translateY(-200px);
+                    transform: translateY(-100px);
                 }
 
 

@@ -159,7 +159,7 @@ export const Header = () => {
                         <Link className=" nav-links nav-search" style={{ display: navLiknsDisplay }} onClick={() => {
 
                             if (window.innerHeight <= 500 || window.innerWidth <= 850) {
-                                window.location = "/search/";
+                                window.location = "/search";
 
 
                             } else {
@@ -268,7 +268,7 @@ const SearchResult = (searchResultValue, searchValue) => {
                             )
                         })}</div>
                 </div>
-                <Link className="continue-search-in-search-page" to={'/search/'} >جستجوی بیشتر درباره‌ی "<span>{searchValue}</span>"</Link>
+                <Link className="continue-search-in-search-page" to={'/search'} >جستجوی بیشتر درباره‌ی "<span>{searchValue}</span>"</Link>
             </div>
         )
 
