@@ -4,8 +4,18 @@ import previuosButton from "../../../assets/svgs/previuos-button.svg";
 import nextButton from "../../../assets/svgs/next-button.svg";
 import pauseButton from "../../../assets/svgs/pause-button.svg";
 import "../player/player.scss";
+import { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 export const Player = (livePlayerData) => {
+
+    const [musicDuration, setMusicDuration] = useState();
+    const durationSliderRef = useRef();
+
+    
+
+
     // console.log(livePlayerData)
     return (
         <div className="player  h-full ">
@@ -18,10 +28,10 @@ export const Player = (livePlayerData) => {
                     <div className="title text-white" >{(livePlayerData.livePlayerData !== undefined && livePlayerData.livePlayerData !== null) ? livePlayerData.livePlayerData.title : "یه موزیک پلی کن !!"}</div>
                     <div className="artist text-white">{(livePlayerData.livePlayerData !== undefined && livePlayerData.livePlayerData !== null) ? livePlayerData.livePlayerData.artist.name : ""}</div>
                 </div>
-                <div className="player-controll">
-                    <audio src={(livePlayerData.livePlayerData !== undefined && livePlayerData.livePlayerData !== null) ? livePlayerData.livePlayerData.preview : ""} autoPlay></audio>
-                    <div className="w-full ">
-                        <input className="w-full" id="live-player-music-playback-time" type="range" />
+                <div className="w-full player-controll">
+                    <audio className="audio" src={(livePlayerData.livePlayerData !== undefined && livePlayerData.livePlayerData !== null) ? livePlayerData.livePlayerData.preview : ""} autoPlay ref={durationSliderRef}></audio>
+                    <div className="live-player-music-playback-time-container">
+                        <input className="w-full" id="live-player-music-playback-time" type="range" max={100} min={0}  dir="ltr" />
                     </div>
                     <div className="player-control-button-container">
 
