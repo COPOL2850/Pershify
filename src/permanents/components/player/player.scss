@@ -1,5 +1,7 @@
 .player {
     width: 250px;
+    height: 100%;
+    min-height: 500px;
     border-left: solid white 1px;
 
     .player-container {
@@ -10,7 +12,7 @@
 
         .album-art-container {
             height: 250px;
-            margin: 50px 0 0 0;
+            margin: 35px 0 0 0;
 
             .album-art {
                 width: 200px;
@@ -26,10 +28,10 @@
 
         .player-controll {
             display: flex;
-             align-items: center;
+            align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            
+
 
             .live-player-music-playback-time-container {
                 // background-color: #fff;
@@ -40,7 +42,7 @@
                 width: 250px;
                 padding: 0;
                 margin: 0;
-                
+
                 #live-player-music-playback-time {
                     -webkit-appearance: none;
                     padding: 0;
@@ -85,10 +87,11 @@
 
                 padding: 0 30px;
             }
+
             .live-player-music-playback-time-container:hover {
                 // background-color: #fff;
-                
-                
+
+
 
                 #live-player-music-playback-time {
                     -webkit-appearance: none;
@@ -119,17 +122,19 @@
                 // padding: 0 30px;
             }
 
-            .player-control-button-container{
+            .player-control-button-container {
                 display: flex;
                 justify-content: space-between;
                 // background-color: red;
                 margin-top: 20px;
                 align-items: center;
                 padding: 0 40px;
+
                 .live-player-control-button {
                     width: 35px;
                     margin: 0 10px;
                 }
+
                 .live-player-control-button:hover {
                     opacity: 0.5;
                 }

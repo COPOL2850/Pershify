@@ -18,7 +18,7 @@ export const Player = (livePlayerData) => {
 
     // console.log(livePlayerData)
     return (
-        <div className="player  h-full ">
+        <div className="player   ">
             <div className="player-container w-full h-full">
                 <div className="player-component-controller  w-full "></div>
                 <div className="album-art-container w-full  flex items-center justify-center">
