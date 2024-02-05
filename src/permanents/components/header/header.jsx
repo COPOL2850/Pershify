@@ -214,7 +214,7 @@ export const Header = ({handleDataLivePlayer}) => {
                         <div id="header-singUp-expander"  >{`>`}</div>
 
                         <Link to={'/login'} className="login" >
-                            <div >ورود به حساب</div>
+                            <div >  aورود به حساب</div>
                         </Link>
                     </div>
 
